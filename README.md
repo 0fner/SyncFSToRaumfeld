@@ -7,8 +7,8 @@ SyncFSToRaumfeld is a Python program for integrating a Frontier Silicon smart ra
 
 Supported functions:
 --------------------
-* automatically switches smart radio on/off
-* automatically selects the correct input on the smart radio
+* smart radio is switched on/off automatically
+* the correct input on the smart radio is automatically selected
 * the volume of the smart radio is set to a pre-defined level when the Teufel Streamer is active, allowing predictable volume levels with the Raumfeld system
 
 
