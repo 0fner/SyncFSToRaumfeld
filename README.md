@@ -1,6 +1,6 @@
 SyncFSToRaumfeld
 ================
-SyncFSToRaumfeld is a Python program for integrating a Frontier Silicon Smart radio (e.g., Teufel Musicstation, Teufel Radio 3sixty) into the Teufel Raumfeld multiroom system. You need a Teufel Streamer connected to the AUX input port of the smart radio and a dedicated computer such as a Raspberry Pi running SyncFSToRaumfeld. SyncFSToRaumfeld automatically switches the smart radio to the AUX input when the Teufel Streamer starts playback, and switches back to the previous smart radio input and power state when playback stops.
+SyncFSToRaumfeld is a Python program for integrating a Frontier Silicon smart radio (e.g., Teufel Musicstation or Radio 3sixty) into the Teufel Raumfeld multiroom system. You need a Teufel Streamer connected to the AUX input port of the smart radio and a dedicated computer such as a Raspberry Pi running SyncFSToRaumfeld. SyncFSToRaumfeld automatically switches the smart radio to the AUX input when the Teufel Streamer starts playback, and switches back to the previous smart radio input and power state when playback stops.
 
 ![Image](overview.png "overview")
 
@@ -15,15 +15,15 @@ Supported functions:
 Requirements:
 -------------
 **Hardware**
-* Teufel Streamer (Teufel/Raumfeld Connector may also work)
-* Frontier Silicon-based Smart Radio (tested with Teufel Musicstation, but Teufel Radio 3sixty, or compatible smart radios from Roberts Radio, Technisat, Hama, Medion, etc. may also work)
-* a computer running the SyncFSToRaumfeld software (a low-cost computer such as a Raspberry Pi is recommended)
+* Teufel Streamer (a Teufel/Raumfeld Connector may also work)
+* Frontier Silicon-based smart radio (tested with Teufel Musicstation, but Teufel Radio 3sixty, or compatible smart radios from Roberts Radio, Technisat, Hama, Medion, etc. may also work)
+* a computer running the SyncFSToRaumfeld script (a low-cost computer such as a Raspberry Pi is recommended)
 
 **Audio connection**
 * connect the Teufel Streamer Line Out to the Line In (AUX In) of the smart radio
 
 **Network**
-* make sure the Teufel Streamer and the Frontier Silicon Radio are on the same network
+* make sure the Teufel Streamer and the Frontier Silicon smart radio are on the same network
 
 **Python**
 * tested with Python 3.11
@@ -36,18 +36,18 @@ Requirements:
 
 _pysimpelsoap_ and _lxml_ can be installed via _pip_ from online sources, _PyRaumfeld_ and _FSAPI_ must be installed from the provided folders:
 1. install setuptools  
-`pip install setuptools`
+    * `pip install setuptools`
 2. install PyRaumfeld  
-change into the PyRaumfeld directory  
-`pip install .`
+    * change into the PyRaumfeld directory  
+    * `pip install .`
 3. install FSAPI  
-change into the python-fsapi directory  
-`pip install .`
+    * change into the python-fsapi directory  
+    * `pip install .`
 
 
 Installation of SyncFSToRaumfeld
 ================================
-SyncFSToRaumfeld can run on any system supporting Python (e.g. Linux, macOS, Windows). For a Raspberry Pi running RaspbianOS do the following:
+SyncFSToRaumfeld can run on any system supporting Python (e.g. Linux, macOS, Windows). For a Raspberry Pi running Raspberry Pi OS do the following:
 
 * copy _SyncFSToRaumfeld.py_ into the home directory of a user (e.g. /home/pi/bin)
 * ensure that _SyncFSToRaumfeld.py_ is owned and executeable by this user
@@ -59,9 +59,9 @@ Configuration
 Set the following variables in the _SyncFSToRaumfeld.py_ script:
 
 * set the IP Adress of the smart radio (`RADIO_HOST_IP`)
-* set the room name hosting the Teufel Streamer (`STREAMER_ROOM_NAME`)  
+* set the Raumfeld room name of the Teufel Streamer (`STREAMER_ROOM_NAME`)  
   Note: The room name is case sensitive. You can find the room name in the Teufel Raumfeld phone app in the mini player (check the bottom of the app's home screen).
-* The preset values of `RADIO_PIN`, `RADIO_MODE` and `RADIO_VOLUME` are suitable for the Teufel Musicstation but may have to be adjuested for other radio models.
+* The preset values of `RADIO_PIN`, `RADIO_MODE` and `RADIO_VOLUME` are suitable for the Teufel Musicstation but may need to be adjusted for other radio models.
 
 First Start:
 ------------
@@ -92,7 +92,7 @@ The path of the executable (`ExecStart`) and the user/group (`User`/`Group`) nee
 
 Limitations
 ===========
-* the IP adress of the Frontier Smart Radio must be fixed: either set a fixed IP address on the radio or assign a fixed IP address via DHCP
+* the IP adress of the Frontier Silicon smart radio must be fixed: either set a fixed IP address on the radio or assign a fixed IP address via DHCP
 * Teufel Streamer devices are identified by their room name, multiple Teufel Streamer devices per room are not supported
 
 Debugging
@@ -101,6 +101,11 @@ Debugging
 * if you are using systemd:
   * check the status of the service: `systemctl status SyncFSToRaumfeld`
   * check the systemd journal: `journalctl -u SyncFSToRaumfeld -e`
+
+Changelog
+=========
+
+* v1.0: initial release
 
 License
 =======
