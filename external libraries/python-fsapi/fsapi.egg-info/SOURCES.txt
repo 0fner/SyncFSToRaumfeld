@@ -1,0 +1,12 @@
+LICENSE.md
+MANIFEST.in
+README
+setup.cfg
+setup.py
+fsapi/__init__.py
+fsapi.egg-info/PKG-INFO
+fsapi.egg-info/SOURCES.txt
+fsapi.egg-info/dependency_links.txt
+fsapi.egg-info/requires.txt
+fsapi.egg-info/top_level.txt
+fsapi.egg-info/zip-safe

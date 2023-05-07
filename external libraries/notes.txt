@@ -1,0 +1,13 @@
+PyRaumfeld:
+library website: https://github.com/Musteblume/PyRaumfeld
+license: MIT License
+
+
+python-fsapi:
+library website: https://github.com/sd-personal/python-fsapi
+license: Apache License V2.0
+
+installation of PyRaumfeld or python-fsapi:
+* pip install setuptools
+* change into PyRaumfeld or python-fsapi directory
+* pip install .
