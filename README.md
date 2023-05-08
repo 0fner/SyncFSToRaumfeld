@@ -1,14 +1,14 @@
 SyncFSToRaumfeld
 ================
-SyncFSToRaumfeld is a Python program for integrating a Frontier Silicon smart radio (e.g., Teufel Musicstation or Radio 3sixty) into the Teufel Raumfeld multiroom system. You need a Teufel Streamer connected to the AUX input port of the smart radio and a dedicated computer such as a Raspberry Pi running SyncFSToRaumfeld. SyncFSToRaumfeld automatically switches the smart radio to the AUX input when the Teufel Streamer starts playback, and switches back to the previous smart radio input and power state when playback stops.
+SyncFSToRaumfeld is a Python program for integrating a Frontier Silicon smart radio (e.g., Teufel Musicstation or Radio 3sixty) into the Teufel Raumfeld multiroom system. You need a Teufel Streamer connected to the AUX input port of the smart radio and a dedicated computer such as a Raspberry Pi running SyncFSToRaumfeld. SyncFSToRaumfeld synchronises the states of the smart radio and the Teufel Streamer via their network APIs: It automatically switches the smart radio to the AUX input when the Teufel Streamer starts playback, and switches back to the previous smart radio input and power state when playback stops.
 
 ![Image](overview.png "overview")
 
 
 Supported functions:
 --------------------
-* smart radio is switched on/off automatically
-* the correct input on the smart radio is automatically selected
+* the smart radio is switched on/off automatically
+* the correct input on the smart radio is selected
 * the volume of the smart radio is set to a pre-defined level when the Teufel Streamer is active, allowing predictable volume levels with the Raumfeld system
 
 
@@ -70,25 +70,32 @@ To ensure that SyncFSToRaumfeld can connect to all devices, change the `LOG_LEVE
 Automatic Start:
 ----------------
 You can use _systemd_ to start SyncFSToRaumfeld at boot time and restart it automatically if it crashes.
-Create a systemd service file _/etc/systemd/system/SyncFSToRaumfeld.service_ with the following content:
 
-`[Unit]`  
-`Description=Synchronize a Frontier Silicon Radio with a Teufel Streamer`  
-`After=multi-user.target`  
-`Requires=network.target`  
+* create a systemd service file _/etc/systemd/system/SyncFSToRaumfeld.service_ with the following content:
 
-`[Service]`  
-`Type=exec`  
-`ExecStart=/home/pi/bin/SyncFSToRaumfeld.py`  
-`Restart=on-failure`  
-`RestartSec=10`  
-`User=pi`  
-`Group=pi`  
+  `[Unit]`  
+  `Description=Synchronize a Frontier Silicon Radio with a Teufel Streamer`  
+  `After=multi-user.target`  
+  `Requires=network.target`  
 
-`[Install]`  
-`WantedBy=multi-user.target`
+  `[Service]`  
+  `Type=exec`  
+  `ExecStart=/home/pi/bin/SyncFSToRaumfeld.py`  
+  `Restart=on-failure`  
+  `RestartSec=10`  
+  `User=pi`  
+  `Group=pi`  
 
-The path of the executable (`ExecStart`) and the user/group (`User`/`Group`) need to be adapted to your system.
+  `[Install]`  
+  `WantedBy=multi-user.target`
+
+  The path of the executable (`ExecStart`) and the user/group (`User`/`Group`) need to be adapted to your system.
+
+* To start SyncFSToRaumfeld automatically at boot time, enable it with:  
+  `systemctl enable SyncFSToRaumfeld`
+
+* Finally, reboot your system or start the SyncFSToRaumfeld service manually with:  
+  `systemctl start SyncFSToRaumfeld`
 
 Limitations
 ===========
