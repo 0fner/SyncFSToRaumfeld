@@ -112,7 +112,7 @@ Debugging
 Changelog
 =========
 
-* v1.0: initial release
+* v1.0.0: initial release
 
 License
 =======
