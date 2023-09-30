@@ -17,13 +17,13 @@ RADIO_MODE = "AUX in"
 RADIO_VOLUME = 20
 LOG_LEVEL = logging.ERROR
 STREAMER_ROOM_NAME = "Bed Room"
-RADIO_TIMEOUT = 3 # [s]
+RADIO_TIMEOUT = 10 # [s]
 SLEEP_TIME = 1 # [s]
 # ********** CONFIGURATION END **********
 
 
 # decorator to make function calls more reliable
-def retry(_func=None, *, retries=5, sleep=0.5):
+def retry(_func=None, *, retries=20, sleep=0.5):
     def retry_decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
