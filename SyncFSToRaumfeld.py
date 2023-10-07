@@ -83,11 +83,11 @@ def set_radio_state(radio, state):
     logging.info("setting new radio state: power=%d, mode=%s, volume=%d, mute=%d" % (state.power, state.mode, state.volume, state.mute))
     # note: setting the mode also switches on the radio; a power off command will only be effective if there is a time delay between setting the mode and the power off command
     radio.mode = state.mode
-    time.sleep(0.3)
+    time.sleep(0.4)
     radio.volume = state.volume
-    time.sleep(0.3)
+    time.sleep(0.4)
     radio.mute = state.mute
-    time.sleep(0.3)
+    time.sleep(0.8)
     radio.power = state.power
 
 
